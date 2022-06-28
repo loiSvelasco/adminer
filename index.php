@@ -21,7 +21,7 @@ function adminer_object()
 		
         // Filters available servers (MySQL, SQLite3, etc)
         new AdminerLoginServers([
-            filter_input(INPUT_SERVER, 'HTTP_HOST') => filter_input(INPUT_SERVER, 'SERVER_NAME')
+            filter_input(INPUT_SERVER, 'localhost') => filter_input(INPUT_SERVER, 'SERVER_NAME')
         ]),
 		
         new AdminerTablesFilter(),
@@ -32,10 +32,12 @@ function adminer_object()
 
         // AdminerTheme has to be the last one.
         new AdminerTheme("default-blue"),
-		// Color variant can by specified in constructor parameter.
-		// new AdminerTheme("default-orange"),
-		// new AdminerTheme("default-blue"),
-		// new AdminerTheme("default-green", ["192.168.0.1" => "default-orange"]),
+        /**
+         * Color variant can by specified in constructor parameter.
+         * new AdminerTheme("default-orange"),
+         * new AdminerTheme("default-blue"),
+         * new AdminerTheme("default-green", ["192.168.0.1" => "default-orange"]),
+         */
     ];
 
     return new AdminerPlugin($plugins);
