@@ -19,6 +19,7 @@ function adminer_object()
 			"phpmyadmin",
 		]),
 		
+        // Filters available servers (MySQL, SQLite3, etc)
         new AdminerLoginServers([
             filter_input(INPUT_SERVER, 'HTTP_HOST') => filter_input(INPUT_SERVER, 'SERVER_NAME')
         ]),
@@ -27,6 +28,7 @@ function adminer_object()
         new AdminerSimpleMenu(),
         new AdminerCollations(),
         new AdminerJsonPreview(),
+        new AdminerLoginPasswordLess(password_hash("PASSWORD", PASSWORD_DEFAULT)),
 
         // AdminerTheme has to be the last one.
         new AdminerTheme("default-blue"),
